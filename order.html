@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Order Joki ML - JokiGame</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="" alt="Logo" id="logoImg" class="logo-img">
+                <span class="logo-text">JokiGame<span class="ml-text">ML</span></span>
+            </div>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Dashboard</a>
+        </div>
+    </nav>
+
+    <div class="order-page">
+        <div class="order-container">
+            <!-- Order Summary Card -->
+            <div class="order-summary-card">
+                <div class="order-summary-header">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Ringkasan Pesanan</h3>
+                </div>
+                <div class="order-summary-content">
+                    <div class="summary-item">
+                        <span>Paket yang dipilih:</span>
+                        <strong id="selectedRank">-</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Harga:</span>
+                        <strong id="selectedPrice" class="price-highlight">Rp0</strong>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-total">
+                        <span>Total:</span>
+                        <strong id="totalPrice" class="price-highlight">Rp0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Order -->
+            <div class="order-form-card">
+                <div class="form-header">
+                    <i class="fas fa-user-edit"></i>
+                    <h3>Informasi Pemesan</h3>
+                    <p>Isi data dengan benar untuk memproses pesanan</p>
+                </div>
+                
+                <form id="orderForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Nama Lengkap <span class="required">*</span></label>
+                        <input type="text" id="nama" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fab fa-whatsapp"></i> WhatsApp / No HP <span class="required">*</span></label>
+                        <input type="tel" id="wa" placeholder="08xxxxxxxxxx" required>
+                        <small>Pastikan nomor aktif untuk konfirmasi pesanan</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-arrow-up"></i> Rank Awal Saat Ini <span class="required">*</span></label>
+                            <select id="rankAwal" required>
+                                <option value="">-- Pilih Rank Awal --</option>
+                                <option value="Warrior">⚔️ Warrior</option>
+                                <option value="Elite">⭐ Elite</option>
+                                <option value="Master">🏅 Master</option>
+                                <option value="Grandmaster">🎖️ Grandmaster</option>
+                                <option value="Epic">🔥 Epic</option>
+                                <option value="Legend">👑 Legend</option>
+                                <option value="Mythic">💎 Mythic</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-flag-checkered"></i> Rank Tujuan</label>
+                            <input type="text" id="rankTujuan" placeholder="Akan terisi otomatis" readonly disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-id-card"></i> ID Game <span class="required">*</span></label>
+                            <input type="text" id="idGame" placeholder="Contoh: 12345678" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label><i class="fas fa-server"></i> Server</label>
+                            <input type="text" id="server" placeholder="Contoh: 1234">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-user-circle"></i> Username In Game <span class="required">*</span></label>
+                        <input type="text" id="username" placeholder="Username MLBB kamu" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label><i class="fas fa-sticky-note"></i> Catatan Tambahan</label>
+                        <textarea id="catatan" rows="3" placeholder="Contoh: Request hero tertentu, jam main, dll..."></textarea>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span class="checkmark"></span>
+                            Saya setuju dengan <a href="#" id="termsLink">syarat dan ketentuan</a> yang berlaku
+                        </label>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="button" id="backBtn" class="btn-back">
+                            <i class="fas fa-arrow-left"></i> Kembali
+                        </button>
+                        <button type="submit" class="btn-submit">
+                            <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Payment Info -->
+            <div class="payment-info-card">
+                <div class="payment-header">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>Metode Pembayaran</h4>
+                </div>
+                <div class="payment-methods">
+                    <span class="payment-badge"><i class="fas fa-university"></i> BCA</span>
+                    <span class="payment-badge"><i class="fas fa-university"></i> Mandiri</span>
+                    <span class="payment-badge"><i class="fas fa-university"></i> BRI</span>
+                    <span class="payment-badge"><i class="fas fa-mobile-alt"></i> Dana</span>
+                    <span class="payment-badge"><i class="fas fa-mobile-alt"></i> OVO</span>
+                    <span class="payment-badge"><i class="fas fa-mobile-alt"></i> GOPAY</span>
+                    <span class="payment-badge"><i class="fas fa-store"></i> ShopeePay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Syarat & Ketentuan -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Syarat & Ketentuan</h3>
+                <span class="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>1. Keamanan Akun</strong><br>Kami tidak meminta password akun Moonton/Facebook/Google. Cukup berikan ID game dan server.</p>
+                <p><strong>2. Proses Joki</strong><br>Proses sesuai antrian. Customer akan diinformasikan via WhatsApp.</p>
+                <p><strong>3. Pembayaran</strong><br>DP 50% sebelum proses, lunas setelah selesai.</p>
+                <p><strong>4. Refund</strong><br>Tidak ada refund jika proses sudah berjalan 50%.</p>
+                <p><strong>5. Garansi</strong><br>Garansi rank turun dalam 3 hari setelah selesai (kecuali disebabkan oleh customer).</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <script>
+        // Load logo
+        function loadLogo() {
+            const savedLogo = localStorage.getItem('websiteLogo');
+            const logoImg = document.getElementById('logoImg');
+            if (savedLogo && logoImg) {
+                logoImg.src = savedLogo;
+            } else if (logoImg) {
+                logoImg.src = "https://placehold.co/40x40/667eea/white?text=ML";
+            }
+        }
+        loadLogo();
+        
+        // Modal terms
+        const modal = document.getElementById('termsModal');
+        const termsLink = document.getElementById('termsLink');
+        const closeBtn = document.querySelector('.modal-close');
+        
+        if (termsLink) {
+            termsLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'flex';
+            });
+        }
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+        }
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

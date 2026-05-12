@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReconPoint - Joki Mobile Legends Terpercaya</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="" alt="Logo" id="logoImg" class="logo-img">
+                <span class="logo-text">Recon<span class="ml-text">Point</span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home"><i class="fas fa-home"></i> Beranda</a></li>
+                <li><a href="#paket"><i class="fas fa-tag"></i> Paket</a></li>
+                <li><a href="#testimoni"><i class="fas fa-star"></i> Testimoni</a></li>
+                <li><a href="admin.html" class="admin-nav"><i class="fas fa-lock"></i> Admin</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge">⭐ PRO PLAYER READY ⭐</div>
+            <h1>Joki <span class="gradient-text">Mobile Legends</span></h1>
+            <h2>Rank Push <span class="highlight">Aman & Terpercaya</span></h2>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Customer Puas</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Fast Response</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Aman</span>
+                </div>
+            </div>
+            <button class="cta-btn" onclick="scrollToPaket()">
+                <i class="fas fa-gamepad"></i> Pilih Paket Sekarang
+            </button>
+        </div>
+        <div class="hero-image">
+            <div class="hero-image-wrapper">
+    		<img src="" alt="MLBB Hero" id="heroImg" style="width:100%; border-radius:30px;">
+	    </div>
+        </div>
+    </section>
+
+    <!-- Fitur Unggulan -->
+    <section class="features">
+        <div class="section-header">
+            <h2>Kenapa Pilih Kami?</h2>
+            <p>Layanan joki terbaik untuk rank ML kamu</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-user-astronaut"></i></div>
+                <h3>Pro Player</h3>
+                <p>Joki oleh pemain berpengalaman rank Mythical Immortal</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3>100% Aman</h3>
+                <p>Akun kamu aman, tanpa cheat atau hack</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                <h3>Fast Response</h3>
+                <p>Proses cepat, chat respon 24/7</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-ticket-alt"></i></div>
+                <h3>Harga Terjangkau</h3>
+                <p>Mulai dari Rp25.000 saja</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paket Harga -->
+    <section class="paket-section" id="paket">
+        <div class="section-header">
+            <h2><i class="fas fa-tag"></i> Pilih Paket Joki</h2>
+            <p>Pilih paket yang sesuai dengan rank tujuanmu</p>
+        </div>
+        
+        <div class="paket-grid">
+            <div class="paket-card" data-rank="Warrior ke Elite">
+                <div class="paket-badge">POPULER</div>
+                <div class="paket-icon"><i class="fas fa-arrow-up"></i></div>
+                <h3>Warrior → Elite</h3>
+                <div class="price">Rp25.000</div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> 4-5 bintang</li>
+                    <li><i class="fas fa-check-circle"></i> Fast response</li>
+                    <li><i class="fas fa-check-circle"></i> Garansi aman</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="paket-card" data-rank="Elite ke Master">
+                <div class="paket-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Elite → Master</h3>
+                <div class="price">Rp35.000</div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> 4-5 bintang</li>
+                    <li><i class="fas fa-check-circle"></i> Fast response</li>
+                    <li><i class="fas fa-check-circle"></i> Garansi aman</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="paket-card" data-rank="Master ke Grandmaster">
+                <div class="paket-icon"><i class="fas fa-trophy"></i></div>
+                <h3>Master → Grandmaster</h3>
+                <div class="price">Rp50.000</div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> 4-5 bintang</li>
+                    <li><i class="fas fa-check-circle"></i> Fast response</li>
+                    <li><i class="fas fa-check-circle"></i> Garansi aman</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="paket-card featured" data-rank="Grandmaster ke Epic">
+                <div class="paket-badge best">⭐ BEST SELLER</div>
+                <div class="paket-icon"><i class="fas fa-crown"></i></div>
+                <h3>Grandmaster → Epic</h3>
+                <div class="price">Rp70.000</div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> 4-5 bintang</li>
+                    <li><i class="fas fa-check-circle"></i> Fast response</li>
+                    <li><i class="fas fa-check-circle"></i> Bonus 1 hero</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="paket-card" data-rank="Epic ke Legend">
+                <div class="paket-icon"><i class="fas fa-medal"></i></div>
+                <h3>Epic → Legend</h3>
+                <div class="price">Rp100.000</div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> 4-5 bintang</li>
+                    <li><i class="fas fa-check-circle"></i> Fast response</li>
+                    <li><i class="fas fa-check-circle"></i> Bonus skin</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="paket-card" data-rank="Legend ke Mythic">
+                <div class="paket-icon"><i class="fas fa-star"></i></div>
+                <h3>Legend → Mythic</h3>
+                <div class="price">Rp150.000</div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> 5 bintang</li>
+                    <li><i class="fas fa-check-circle"></i> Fast response</li>
+                    <li><i class="fas fa-check-circle"></i> Guaranteed</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="paket-card" data-rank="Mythic Point">
+                <div class="paket-icon"><i class="fas fa-chart-simple"></i></div>
+                <h3>Mythic Point</h3>
+                <div class="price">Rp5.000 <span>/point</span></div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> Minimal 10 point</li>
+                    <li><i class="fas fa-check-circle"></i> Fast response</li>
+                    <li><i class="fas fa-check-circle"></i> Akun aman</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="paket-card" data-rank="Custom">
+                <div class="paket-icon"><i class="fas fa-sliders-h"></i></div>
+                <h3>Custom Order</h3>
+                <div class="price">Chat Admin</div>
+                <ul class="benefits">
+                    <li><i class="fas fa-check-circle"></i> Request hero</li>
+                    <li><i class="fas fa-check-circle"></i> Request skin</li>
+                    <li><i class="fas fa-check-circle"></i> Chat via WA</li>
+                </ul>
+                <button class="pilih-btn">Pilih Paket <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni -->
+    <section class="testimoni-section" id="testimoni">
+        <div class="section-header">
+            <h2><i class="fas fa-comment-dots"></i> Testimoni Customer</h2>
+            <p>Apa kata mereka yang sudah menggunakan jasa kami</p>
+        </div>
+        <div class="testimoni-grid">
+            <div class="testimoni-card">
+                <div class="testimoni-header">
+                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User" class="avatar">
+                    <div class="testimoni-user">
+                        <h4>Sarah Wijaya</h4>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimoni-text">"Jokinya cepat banget, rank langsung naik! Pro player beneran, recommended!"</p>
+                <div class="testimoni-game"><i class="fas fa-gamepad"></i> Mobile Legends</div>
+            </div>
+            <div class="testimoni-card">
+                <div class="testimoni-header">
+                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User" class="avatar">
+                    <div class="testimoni-user">
+                        <h4>Andi Pratama</h4>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimoni-text">"Aman akunnya, nggak pakai cheat. Pasti order lagi kalau butuh joki."</p>
+                <div class="testimoni-game"><i class="fas fa-gamepad"></i> Mobile Legends</div>
+            </div>
+            <div class="testimoni-card">
+                <div class="testimoni-header">
+                    <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="User" class="avatar">
+                    <div class="testimoni-user">
+                        <h4>Rini Susanti</h4>
+                        <div class="rating">★★★★★</div>
+                    </div>
+                </div>
+                <p class="testimoni-text">"Harga murah, respon cepet, pelayanan ramah. Worth it banget!"</p>
+                <div class="testimoni-game"><i class="fas fa-gamepad"></i> Mobile Legends</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="section-header">
+            <h2><i class="fas fa-question-circle"></i> FAQ</h2>
+            <p>Pertanyaan yang sering diajukan</p>
+        </div>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>❓ Apakah akun saya aman?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya, 100% aman. Kami tidak pernah meminta password akun Moonton/Facebook/Google. Cukup berikan ID game dan server.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>❓ Berapa lama proses joki?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Proses tergantung target rank, biasanya 1-3 hari. Untuk rank rendah bisa selesai dalam hitungan jam.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>❓ Metode pembayaran apa saja?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Transfer bank (BCA, Mandiri, BRI), Dana, OVO, GOPAY, dan ShopeePay.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>❓ Apakah bisa request hero tertentu?</h3>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Bisa! Silakan pilih paket Custom Order atau chat via WhatsApp untuk request hero spesifik.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="" alt="Logo" id="footerLogoImg" class="footer-logo-img">
+                    <span>JokiGame<span class="ml-text">ML</span></span>
+                </div>
+                <p>Layanan joki Mobile Legends terpercaya sejak 2024.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>📞 Kontak</h3>
+                <p><i class="fab fa-whatsapp"></i> <span id="footerWa">081313023459</span></p>
+                <p><i class="far fa-envelope"></i> jokigame@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>📌 Layanan</h3>
+                <p>Rank Push ML</p>
+                <p>Joki Event</p>
+                <p>MMR Boosting</p>
+                <p>Skin Service</p>
+            </div>
+            <div class="footer-section">
+                <h3>⚡ Jam Operasional</h3>
+                <p>24 Jam Nonstop</p>
+                <p>7 Hari Seminggu</p>
+                <p>Termasuk Hari Libur</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2024 JokiGame - Layanan Joki Mobile Legends Terpercaya</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+	    <script>
+	    // Scroll to paket section
+	    function scrollToPaket() {
+	        document.getElementById('paket').scrollIntoView({ behavior: 'smooth' });
+	    }
+	    
+	    // Load logo dari localStorage
+	    function loadWebsiteLogo() {
+	        const savedLogo = localStorage.getItem('websiteLogo');
+	        const logoImgs = document.querySelectorAll('#logoImg, #footerLogoImg');
+	        logoImgs.forEach(img => {
+	            if (savedLogo && img) {
+	                img.src = savedLogo;
+	            } else if (img) {
+	                img.src = "https://placehold.co/40x40/667eea/white?text=ML";
+	            }
+	        });
+	    }
+	    
+	    // Load gambar hero dari localStorage
+	    function loadHeroImage() {
+	        const savedHero = localStorage.getItem('websiteHero');
+	        const heroImg = document.getElementById('heroImg');
+	        if (savedHero && heroImg) {
+	            heroImg.src = savedHero;
+	        } else if (heroImg) {
+	            heroImg.src = "https://placehold.co/400x400/667eea/white?text=MLBB+Hero";
+	        }
+	    }
+	    
+	    loadWebsiteLogo();
+	    loadHeroImage();
+	    
+	    // Dengarkan perubahan dari halaman lain
+	    window.addEventListener('storage', (e) => {
+	        if (e.key === 'websiteLogo' || e.key === 'logoUpdated') {
+	            loadWebsiteLogo();
+	        }
+	        if (e.key === 'websiteHero' || e.key === 'heroUpdated') {
+ 	           loadHeroImage();
+ 	       }
+ 	   });
+ 	   
+ 	   // Mobile menu toggle
+ 	   const menuToggle = document.getElementById('menuToggle');
+ 	   const navMenu = document.querySelector('.nav-menu');
+ 	   if (menuToggle) {
+ 	       menuToggle.addEventListener('click', () => {
+ 	           navMenu.classList.toggle('active');
+ 	       });
+ 	   }
+    
+	    // FAQ toggle
+	    document.querySelectorAll('.faq-item').forEach(item => {
+	        const question = item.querySelector('.faq-question');
+	        question.addEventListener('click', () => {
+	            item.classList.toggle('active');
+	            const toggle = question.querySelector('.faq-toggle');
+	            toggle.textContent = item.classList.contains('active') ? '−' : '+';
+	        });
+	    });
+	</script>
+</body>
+</html>

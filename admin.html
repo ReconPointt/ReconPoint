@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - JokiGame ML</title>
+    <link rel="stylesheet" href="admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <i class="fas fa-chart-line"></i>
+                    <span>JokiGame<span class="ml-text">Admin</span></span>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li class="menu-item active" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </li>
+                <li class="menu-item" data-page="orders">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Daftar Order</span>
+                    <span class="badge" id="orderBadge">0</span>
+                </li>
+                <li class="menu-item" data-page="statistics">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistik</span>
+                </li>
+                <li class="menu-item" data-page="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Pengaturan</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <button id="logoutBtnSidebar" class="logout-sidebar">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Navbar -->
+            <header class="top-bar">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="top-bar-title">
+                    <h2 id="pageTitle">Dashboard</h2>
+                </div>
+                <div class="top-bar-right">
+                    <div class="admin-profile">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Admin</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Login Form -->
+            <div id="loginForm" class="login-container">
+                <div class="login-card">
+                    <div class="login-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2>Admin Login</h2>
+                    <p>Masukkan password untuk mengakses panel</p>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password">
+                    </div>
+                    <button id="loginBtn">
+                        <i class="fas fa-arrow-right"></i> Login
+                    </button>
+                    <p class="login-hint">Password default: <strong>admin123</strong></p>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div id="dashboardContent" style="display: none;">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Order</h3>
+                            <p id="statTotal">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Order Hari Ini</h3>
+                            <p id="statToday">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Mobile Legends</h3>
+                            <p id="statML">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Customer</h3>
+                            <p id="statCustomer">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart & Recent Orders -->
+                <div class="dashboard-row">
+                    <div class="chart-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-chart-line"></i> Statistik Order per Bulan</h3>
+                        </div>
+                        <canvas id="orderChart" height="200"></canvas>
+                    </div>
+                    <div class="recent-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-clock"></i> Order Terbaru</h3>
+                            <a href="#" id="viewAllOrders" class="view-all">Lihat Semua <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="recent-list" id="recentOrders">
+                            <p style="text-align:center; padding:20px;">Belum ada order</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <div class="action-card" onclick="window.location.href='upload-logo.html'">
+                        <i class="fas fa-image"></i>
+                        <h4>Upload Gambar</h4>
+                        <p>Ganti logo & hero</p>
+                    </div>
+                    <div class="action-card" id="exportExcelBtn">
+                        <i class="fas fa-file-excel"></i>
+                        <h4>Export Excel</h4>
+                        <p>Download data order</p>
+                    </div>
+                    <div class="action-card" id="clearAllBtn">
+                        <i class="fas fa-trash-alt"></i>
+                        <h4>Hapus Semua</h4>
+                        <p>Bersihkan data</p>
+                    </div>
+                    <div class="action-card" onclick="window.location.href='index.html'">
+                        <i class="fas fa-globe"></i>
+                        <h4>Lihat Website</h4>
+                        <p>Buka halaman customer</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Page -->
+            <div id="ordersContent" style="display: none;">
+                <div class="content-header">
+                    <h2><i class="fas fa-shopping-cart"></i> Daftar Order</h2>
+                    <div class="action-buttons">
+                        <button id="exportOrdersBtn" class="btn-export"><i class="fas fa-download"></i> Export</button>
+                        <button id="refreshOrdersBtn" class="btn-refresh"><i class="fas fa-sync-alt"></i> Refresh</button>
+                    </div>
+                </div>
+                
+                <!-- Filters -->
+                <div class="filters-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Cari nama, ID game, atau username...">
+                    </div>
+                    <select id="filterGame" class="filter-select">
+                        <option value="">Semua Game</option>
+                        <option value="Mobile Legends">Mobile Legends</option>
+                    </select>
+                    <select id="filterDate" class="filter-select">
+                        <option value="all">Semua Waktu</option>
+                        <option value="today">Hari Ini</option>
+                        <option value="week">7 Hari Terakhir</option>
+                        <option value="month">Bulan Ini</option>
+                    </select>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>WA</th>
+                                <th>Game</th>
+                                <th>Paket</th>
+                                <th>Rank Awal</th>
+                                <th>Rank Tujuan</th>
+                                <th>ID Game</th>
+                                <th>Username</th>
+                                <th>Harga</th>
+                                <th>Waktu</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderList"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Statistics Page -->
+            <div id="statisticsContent" style="display: none;">
+                <div class="content-header">
+                    <h2><i class="fas fa-chart-bar"></i> Statistik Lengkap</h2>
+                </div>
+                
+                <div class="stats-detail-grid">
+                    <div class="stats-detail-card">
+                        <h3>Order Berdasarkan Paket</h3>
+                        <canvas id="paketChart" height="250"></canvas>
+                    </div>
+                    <div class="stats-detail-card">
+                        <h3>Order Berdasarkan Rank</h3>
+                        <canvas id="rankChart" height="250"></canvas>
+                    </div>
+                </div>
+                
+                <div class="stats-summary">
+                    <div class="summary-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <div>
+                            <h4>Total Pendapatan</h4>
+                            <p id="totalRevenue">Rp0</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <h4>Rata-rata per hari</h4>
+                            <p id="avgPerDay">0 order/hari</p>
+                        </div>
+                    </div>
+                    <div class="summary-item">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <h4>Paket Terlaris</h4>
+                            <p id="bestPackage">-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settingsContent" style="display: none;">
+                <div class="content-header">
+                    <h2><i class="fas fa-cog"></i> Pengaturan</h2>
+                </div>
+                
+                <div class="settings-card">
+                    <h3><i class="fas fa-lock"></i> Keamanan</h3>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>Password Admin Baru</label>
+                            <input type="password" id="newPassword" placeholder="Masukkan password baru">
+                        </div>
+                        <div class="form-group">
+                            <label>Konfirmasi Password</label>
+                            <input type="password" id="confirmPassword" placeholder="Konfirmasi password">
+                        </div>
+                        <button id="changePasswordBtn" class="btn-primary">Ubah Password</button>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3><i class="fab fa-whatsapp"></i> Nomor WhatsApp Admin</h3>
+                    <div class="settings-form">
+                        <div class="form-group">
+                            <label>Nomor WhatsApp (untuk order)</label>
+                            <input type="tel" id="adminWa" placeholder="6281234567890">
+                            <small>Gunakan kode negara (62) tanpa 0 di depan</small>
+                        </div>
+                        <button id="saveWaBtn" class="btn-primary">Simpan WA</button>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <h3><i class="fas fa-database"></i> Data</h3>
+                    <div class="settings-form">
+                        <button id="backupDataBtn" class="btn-secondary"><i class="fas fa-download"></i> Backup Data</button>
+                        <button id="restoreDataBtn" class="btn-secondary"><i class="fas fa-upload"></i> Restore Data</button>
+                        <input type="file" id="restoreFile" style="display: none;">
+                        <button id="clearDataBtn" class="btn-danger"><i class="fas fa-trash"></i> Hapus Semua Data</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
