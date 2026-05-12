@@ -734,11 +734,56 @@ body {
     transform: scale(1.02);
 }
 
+/* Payment Methods - Bisa Diklik */
 .payment-methods {
     padding: 20px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.payment-option:hover {
+    background: rgba(102,126,234,0.2);
+    transform: translateX(5px);
+}
+
+.payment-option.selected {
+    background: rgba(102,126,234,0.3);
+    border-color: #667eea;
+}
+
+.payment-option i {
+    font-size: 28px;
+    width: 40px;
+    color: #667eea;
+}
+
+.payment-option span {
+    font-size: 16px;
+    font-weight: 500;
+    flex: 1;
+}
+
+.payment-detail {
+    font-size: 11px;
+    color: #aaa;
+    font-family: monospace;
+}
+
+.payment-option.selected .payment-detail {
+    color: #ffd700;
 }
 
 .payment-badge {
