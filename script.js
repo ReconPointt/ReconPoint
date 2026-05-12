@@ -3,7 +3,6 @@ if (document.querySelector('.paket-grid')) {
     let selectedRank = null;
     let selectedPrice = null;
 
-    // Klik paket card
     document.querySelectorAll('.paket-card').forEach(card => {
         card.addEventListener('click', (e) => {
             if (e.target.classList.contains('pilih-btn') || e.target.closest('.pilih-btn')) return;
@@ -101,6 +100,9 @@ if (document.getElementById('orderForm')) {
         orders.push(newOrder);
         localStorage.setItem('orders', JSON.stringify(orders));
         
+        // GANTI NOMOR WHATSAPP ADMIN DI SINI!
+        const nomorAdmin = '6281234567890'; // <-- GANTI DENGAN NOMOR KAMU
+        
         const pesan = `Halo Admin JokiGame! Saya ingin order joki ML.%0A%0A` +
                       `*Data Diri:*%0A` +
                       `Nama: ${nama}%0A` +
@@ -116,8 +118,6 @@ if (document.getElementById('orderForm')) {
                       `Catatan: ${catatan || '-'}%0A%0A` +
                       `Mohon info cara pembayaran. Terima kasih!`;
         
-        const nomorAdmin = '6281313023459';
-        
         window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
         
         alert('✅ Order berhasil! Anda akan diarahkan ke WhatsApp admin.');
@@ -131,30 +131,9 @@ if (document.getElementById('orderForm')) {
 }
 
 // ========== FUNGSI UMUM ==========
-// Scroll ke paket
 function scrollToPaket() {
     const paketSection = document.getElementById('paket');
     if (paketSection) {
         paketSection.scrollIntoView({ behavior: 'smooth' });
     }
 }
-
-// Load logo
-function loadWebsiteLogo() {
-    const savedLogo = localStorage.getItem('websiteLogo');
-    const logoImgs = document.querySelectorAll('#logoImg, #footerLogoImg');
-    logoImgs.forEach(img => {
-        if (savedLogo && img) {
-            img.src = savedLogo;
-        } else if (img) {
-            img.src = "https://placehold.co/40x40/667eea/white?text=ML";
-        }
-    });
-}
-loadWebsiteLogo();
-
-window.addEventListener('storage', (e) => {
-    if (e.key === 'websiteLogo' || e.key === 'logoUpdated') {
-        loadWebsiteLogo();
-    }
-});
