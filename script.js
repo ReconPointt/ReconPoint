@@ -57,6 +57,27 @@ if (document.getElementById('orderForm')) {
         });
     }
     
+    // ========== PILIHAN METODE PEMBAYARAN ==========
+let selectedPayment = null;
+
+// Fungsi untuk memilih metode pembayaran
+function selectPayment(payment) {
+    selectedPayment = payment;
+    document.querySelectorAll('.payment-option').forEach(opt => {
+        opt.classList.remove('selected');
+        if (opt.getAttribute('data-payment') === payment) {
+            opt.classList.add('selected');
+        }
+    });
+}
+
+// Event listener untuk klik metode pembayaran
+document.querySelectorAll('.payment-option').forEach(option => {
+    option.addEventListener('click', () => {
+        const payment = option.getAttribute('data-payment');
+        selectPayment(payment);
+    });
+});
     document.getElementById('orderForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -101,7 +122,7 @@ if (document.getElementById('orderForm')) {
         localStorage.setItem('orders', JSON.stringify(orders));
         
         // GANTI NOMOR WHATSAPP ADMIN DI SINI!
-        const nomorAdmin = '6281234567890'; // <-- GANTI DENGAN NOMOR KAMU
+        const nomorAdmin = '6281313023459'; // <-- GANTI DENGAN NOMOR KAMU
         
         const pesan = `Halo Admin JokiGame! Saya ingin order joki ML.%0A%0A` +
                       `*Data Diri:*%0A` +
@@ -116,6 +137,7 @@ if (document.getElementById('orderForm')) {
                       `ID Game: ${idGameFull}%0A` +
                       `Username: ${username}%0A` +
                       `Catatan: ${catatan || '-'}%0A%0A` +
+                      `*Metode Pembayaran:* ${selectedPayment}%0A%0A` +
                       `Mohon info cara pembayaran. Terima kasih!`;
         
         window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
