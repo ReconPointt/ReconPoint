@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReconPoint - Joki Mobile Legends Terpercaya</title>
+    <title>JokiGame ML - Joki Mobile Legends Terpercaya</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -13,8 +13,9 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://github.com/ReconPointt/ReconPoint/blob/main/logo.png?raw=true" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
-                <span class="logo-text">Recon<span class="ml-text">Point</span></span>
+                <!-- GANTI URL INI DENGAN URL GAMBAR LOGO KAMU DARI GITHUB -->
+                <img src="https://raw.githubusercontent.com/gemapaschall1489/ReconvPoint/main/images/logo.png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
+                <span class="logo-text">JokiGame<span class="ml-text">ML</span></span>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home"><i class="fas fa-home"></i> Beranda</a></li>
@@ -54,8 +55,9 @@
         </div>
         <div class="hero-image">
             <div class="hero-image-wrapper">
-    		<img src="https://github.com/ReconPointt/ReconPoint/blob/main/logo.png?raw=true" alt="LOGO" id="heroImg" onerror="this.src='https://placehold.co/400x400/667eea/white?text=MLBB+Hero'">
-	    </div>
+                <!-- GANTI URL INI DENGAN URL GAMBAR HERO KAMU DARI GITHUB -->
+                <img src="https://raw.githubusercontent.com/gemapaschall1489/ReconvPoint/main/images/hero.png" alt="MLBB Hero" id="heroImg" onerror="this.src='https://placehold.co/400x400/667eea/white?text=MLBB+Hero'">
+            </div>
         </div>
     </section>
 
@@ -69,7 +71,7 @@
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-user-astronaut"></i></div>
                 <h3>Pro Player</h3>
-                <p>Joki oleh pemain berpengalaman rank Mythical Immortal</p>
+                <p>Joki oleh pemain berpengalaman rank Mythic Glory</p>
             </div>
             <div class="feature-card">
                 <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
@@ -291,7 +293,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <div class="footer-logo">
-                    <img src="" alt="Logo" id="footerLogoImg" class="footer-logo-img">
+                    <!-- GANTI URL INI DENGAN URL GAMBAR LOGO KAMU DARI GITHUB -->
+                    <img src="https://raw.githubusercontent.com/gemapaschall1489/ReconvPoint/main/images/logo.png" alt="Logo" class="footer-logo-img" onerror="this.src='https://placehold.co/35x35/667eea/white?text=ML'">
                     <span>JokiGame<span class="ml-text">ML</span></span>
                 </div>
                 <p>Layanan joki Mobile Legends terpercaya sejak 2024.</p>
@@ -304,7 +307,7 @@
             </div>
             <div class="footer-section">
                 <h3>📞 Kontak</h3>
-                <p><i class="fab fa-whatsapp"></i> <span id="footerWa">081313023459</span></p>
+                <p><i class="fab fa-whatsapp"></i> <span id="footerWa">088888888888</span></p>
                 <p><i class="far fa-envelope"></i> jokigame@gmail.com</p>
             </div>
             <div class="footer-section">
@@ -328,67 +331,27 @@
 
     <script src="script.js"></script>
     
-	    <script>
-	    // Scroll to paket section
-	    function scrollToPaket() {
-	        document.getElementById('paket').scrollIntoView({ behavior: 'smooth' });
-	    }
-	    
-	    // Load logo dari localStorage
-	    function loadWebsiteLogo() {
-	        const savedLogo = localStorage.getItem('websiteLogo');
-	        const logoImgs = document.querySelectorAll('#logoImg, #footerLogoImg');
-	        logoImgs.forEach(img => {
-	            if (savedLogo && img) {
-	                img.src = savedLogo;
-	            } else if (img) {
-	                img.src = "https://placehold.co/40x40/667eea/white?text=ML";
-	            }
-	        });
-	    }
-	    
-	    // Load gambar hero dari localStorage
-	    function loadHeroImage() {
-	        const savedHero = localStorage.getItem('websiteHero');
-	        const heroImg = document.getElementById('heroImg');
-	        if (savedHero && heroImg) {
-	            heroImg.src = savedHero;
-	        } else if (heroImg) {
-	            heroImg.src = "https://placehold.co/400x400/667eea/white?text=MLBB+Hero";
-	        }
-	    }
-	    
-	    loadWebsiteLogo();
-	    loadHeroImage();
-	    
-	    // Dengarkan perubahan dari halaman lain
-	    window.addEventListener('storage', (e) => {
-	        if (e.key === 'websiteLogo' || e.key === 'logoUpdated') {
-	            loadWebsiteLogo();
-	        }
-	        if (e.key === 'websiteHero' || e.key === 'heroUpdated') {
- 	           loadHeroImage();
- 	       }
- 	   });
- 	   
- 	   // Mobile menu toggle
- 	   const menuToggle = document.getElementById('menuToggle');
- 	   const navMenu = document.querySelector('.nav-menu');
- 	   if (menuToggle) {
- 	       menuToggle.addEventListener('click', () => {
- 	           navMenu.classList.toggle('active');
- 	       });
- 	   }
-    
-	    // FAQ toggle
-	    document.querySelectorAll('.faq-item').forEach(item => {
-	        const question = item.querySelector('.faq-question');
-	        question.addEventListener('click', () => {
-	            item.classList.toggle('active');
-	            const toggle = question.querySelector('.faq-toggle');
-	            toggle.textContent = item.classList.contains('active') ? '−' : '+';
-	        });
-	    });
-	</script>
+    <script>
+        function scrollToPaket() {
+            document.getElementById('paket').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+        
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+                const toggle = question.querySelector('.faq-toggle');
+                toggle.textContent = item.classList.contains('active') ? '−' : '+';
+            });
+        });
+    </script>
 </body>
 </html>
