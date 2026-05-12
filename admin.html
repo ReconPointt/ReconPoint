@@ -15,7 +15,7 @@
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="sidebar-logo">
-                    <i class="fas fa-chart-line"></i>
+                    <img src="https://raw.githubusercontent.com/gemapaschall1489/ReconvPoint/main/images/logo.png" alt="Logo" style="width:32px; height:32px; border-radius:8px;" onerror="this.src='https://placehold.co/32x32/667eea/white?text=ML'">
                     <span>JokiGame<span class="ml-text">Admin</span></span>
                 </div>
             </div>
@@ -48,7 +48,6 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Top Navbar -->
             <header class="top-bar">
                 <button class="menu-toggle" id="menuToggle">
                     <i class="fas fa-bars"></i>
@@ -60,7 +59,6 @@
                     <div class="admin-profile">
                         <i class="fas fa-user-shield"></i>
                         <span>Admin</span>
-                        <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
             </header>
@@ -86,39 +84,30 @@
 
             <!-- Dashboard Content -->
             <div id="dashboardContent" style="display: none;">
-                <!-- Stats Cards -->
                 <div class="stats-grid">
                     <div class="stat-card primary">
-                        <div class="stat-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
+                        <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
                         <div class="stat-info">
                             <h3>Total Order</h3>
                             <p id="statTotal">0</p>
                         </div>
                     </div>
                     <div class="stat-card success">
-                        <div class="stat-icon">
-                            <i class="fas fa-calendar-day"></i>
-                        </div>
+                        <div class="stat-icon"><i class="fas fa-calendar-day"></i></div>
                         <div class="stat-info">
                             <h3>Order Hari Ini</h3>
                             <p id="statToday">0</p>
                         </div>
                     </div>
                     <div class="stat-card warning">
-                        <div class="stat-icon">
-                            <i class="fas fa-gamepad"></i>
-                        </div>
+                        <div class="stat-icon"><i class="fas fa-gamepad"></i></div>
                         <div class="stat-info">
                             <h3>Mobile Legends</h3>
                             <p id="statML">0</p>
                         </div>
                     </div>
                     <div class="stat-card info">
-                        <div class="stat-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
+                        <div class="stat-icon"><i class="fas fa-users"></i></div>
                         <div class="stat-info">
                             <h3>Total Customer</h3>
                             <p id="statCustomer">0</p>
@@ -126,7 +115,6 @@
                     </div>
                 </div>
 
-                <!-- Chart & Recent Orders -->
                 <div class="dashboard-row">
                     <div class="chart-card">
                         <div class="card-header">
@@ -145,13 +133,7 @@
                     </div>
                 </div>
 
-                <!-- Quick Actions -->
                 <div class="quick-actions">
-                    <div class="action-card" onclick="window.location.href='upload-logo.html'">
-                        <i class="fas fa-image"></i>
-                        <h4>Upload Gambar</h4>
-                        <p>Ganti logo & hero</p>
-                    </div>
                     <div class="action-card" id="exportExcelBtn">
                         <i class="fas fa-file-excel"></i>
                         <h4>Export Excel</h4>
@@ -180,7 +162,6 @@
                     </div>
                 </div>
                 
-                <!-- Filters -->
                 <div class="filters-bar">
                     <div class="search-box">
                         <i class="fas fa-search"></i>
@@ -198,7 +179,6 @@
                     </select>
                 </div>
 
-                <!-- Orders Table -->
                 <div class="table-container">
                     <table class="data-table">
                         <thead>
