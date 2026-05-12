@@ -116,7 +116,7 @@ if (document.getElementById('orderForm')) {
         
         // ============ KIRIM KE GOOGLE SHEETS ============
         // GANTI URL INI DENGAN WEB APP URL DARI GOOGLE APPS SCRIPT
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtzzPLxeUxJ1MdpANC2e1rSYAecb3zzGTGKYN1T4Qmu4NUn7wdEd_b7t5qWadyJPtt/exec';
         
         try {
             const response = await fetch(GOOGLE_SCRIPT_URL, {
@@ -137,7 +137,7 @@ if (document.getElementById('orderForm')) {
         
         // ============ KIRIM WHATSAPP ============
         // GANTI NOMOR WHATSAPP ADMIN DI SINI!
-        const nomorAdmin = '6281234567890';  // <-- GANTI DENGAN NOMORMU
+        const nomorAdmin = '6281313023459';  // <-- GANTI DENGAN NOMORMU
         
         const pesan = `Halo Admin JokiGame! Saya ingin order joki ML.%0A%0A` +
                       `*Data Diri:*%0A` +
