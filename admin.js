@@ -5,7 +5,6 @@ let orderChart = null;
 let paketChart = null;
 let rankChart = null;
 
-// Load orders dari localStorage
 function loadOrders() {
     const stored = localStorage.getItem('orders');
     orders = stored ? JSON.parse(stored) : [];
@@ -108,7 +107,6 @@ function renderOrdersTable() {
 }
 
 function updateCharts() {
-    // Chart order per bulan (7 bulan terakhir)
     const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'];
     const monthCount = {};
     
@@ -153,7 +151,6 @@ function updateCharts() {
         });
     }
     
-    // Chart berdasarkan paket
     const paketCount = {};
     orders.forEach(order => {
         const paket = order.paket || 'Custom';
@@ -176,7 +173,6 @@ function updateCharts() {
         });
     }
     
-    // Chart berdasarkan rank awal
     const rankCount = {};
     orders.forEach(order => {
         const rank = order.rankAwal || 'Unknown';
@@ -203,7 +199,6 @@ function updateCharts() {
 }
 
 function updateStatistics() {
-    // Hitung total pendapatan
     let totalRevenue = 0;
     orders.forEach(order => {
         const harga = order.harga || '0';
@@ -213,7 +208,6 @@ function updateStatistics() {
     
     document.getElementById('totalRevenue').innerText = `Rp${totalRevenue.toLocaleString()}`;
     
-    // Rata-rata per hari
     if (orders.length > 0) {
         const firstDate = new Date(orders[orders.length - 1].waktu);
         const today = new Date();
@@ -222,7 +216,6 @@ function updateStatistics() {
         document.getElementById('avgPerDay').innerText = `${avgPerDay} order/hari`;
     }
     
-    // Paket terlaris
     const paketCount = {};
     orders.forEach(order => {
         const paket = order.paket || 'Custom';
@@ -365,8 +358,6 @@ function changePassword() {
 function backupData() {
     const data = {
         orders: orders,
-        websiteLogo: localStorage.getItem('websiteLogo'),
-        websiteHero: localStorage.getItem('websiteHero'),
         adminWa: localStorage.getItem('adminWa')
     };
     const blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
@@ -383,8 +374,6 @@ function restoreData(file) {
             const data = JSON.parse(e.target.result);
             if (data.orders) {
                 localStorage.setItem('orders', JSON.stringify(data.orders));
-                if (data.websiteLogo) localStorage.setItem('websiteLogo', data.websiteLogo);
-                if (data.websiteHero) localStorage.setItem('websiteHero', data.websiteHero);
                 if (data.adminWa) localStorage.setItem('adminWa', data.adminWa);
                 alert('Restore data berhasil!');
                 location.reload();
@@ -398,7 +387,6 @@ function restoreData(file) {
     reader.readAsText(file);
 }
 
-// Login logic
 function checkLogin() {
     const savedPassword = localStorage.getItem('adminPassword');
     const adminLoggedIn = localStorage.getItem('adminLoggedIn');
@@ -429,7 +417,6 @@ document.getElementById('logoutBtnSidebar')?.addEventListener('click', () => {
     location.reload();
 });
 
-// Menu navigation
 document.querySelectorAll('.menu-item').forEach(item => {
     item.addEventListener('click', () => {
         const page = item.getAttribute('data-page');
@@ -457,15 +444,12 @@ document.getElementById('restoreFile')?.addEventListener('change', (e) => {
 });
 document.getElementById('clearDataBtn')?.addEventListener('click', clearAllOrders);
 
-// Filter events
 document.getElementById('searchInput')?.addEventListener('input', renderOrdersTable);
 document.getElementById('filterGame')?.addEventListener('change', renderOrdersTable);
 document.getElementById('filterDate')?.addEventListener('change', renderOrdersTable);
 
-// Sidebar toggle
 document.getElementById('menuToggle')?.addEventListener('click', () => {
     document.getElementById('sidebar').classList.toggle('active');
 });
 
-// Initialize
 checkLogin();
