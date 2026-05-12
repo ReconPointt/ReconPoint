@@ -126,25 +126,53 @@
                     </div>
                 </form>
             </div>
-
-            <!-- Payment Info -->
-            <div class="payment-info-card">
-                <div class="payment-header">
-                    <i class="fas fa-credit-card"></i>
-                    <h4>Metode Pembayaran</h4>
-                </div>
-                <div class="payment-methods">
-                    <span class="payment-badge"><i class="fas fa-university"></i> BCA</span>
-                    <span class="payment-badge"><i class="fas fa-university"></i> Mandiri</span>
-                    <span class="payment-badge"><i class="fas fa-university"></i> BRI</span>
-                    <span class="payment-badge"><i class="fas fa-mobile-alt"></i> Dana</span>
-                    <span class="payment-badge"><i class="fas fa-mobile-alt"></i> OVO</span>
-                    <span class="payment-badge"><i class="fas fa-mobile-alt"></i> GOPAY</span>
-                    <span class="payment-badge"><i class="fas fa-store"></i> ShopeePay</span>
-                </div>
-            </div>
+            
+<!-- Payment Info -->
+<div class="payment-info-card">
+    <div class="payment-header">
+        <i class="fas fa-credit-card"></i>
+        <h4>Pilih Metode Pembayaran</h4>
+        <p style="font-size: 12px; margin-left: auto;">Pilih salah satu</p>
+    </div>
+    <div class="payment-methods" id="paymentMethods">
+        <div class="payment-option" data-payment="BCA Transfer">
+            <i class="fas fa-university"></i>
+            <span>BCA Transfer</span>
+            <div class="payment-detail">a.n. JOKIGAME - 1234567890</div>
+        </div>
+        <div class="payment-option" data-payment="Mandiri Transfer">
+            <i class="fas fa-university"></i>
+            <span>Mandiri Transfer</span>
+            <div class="payment-detail">a.n. JOKIGAME - 9876543210</div>
+        </div>
+        <div class="payment-option" data-payment="BRI Transfer">
+            <i class="fas fa-university"></i>
+            <span>BRI Transfer</span>
+            <div class="payment-detail">a.n. JOKIGAME - 5678901234</div>
+        </div>
+        <div class="payment-option" data-payment="Dana">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Dana</span>
+            <div class="payment-detail">ID: 081234567890</div>
+        </div>
+        <div class="payment-option" data-payment="OVO">
+            <i class="fas fa-mobile-alt"></i>
+            <span>OVO</span>
+            <div class="payment-detail">ID: 081234567890</div>
+        </div>
+        <div class="payment-option" data-payment="GOPAY">
+            <i class="fas fa-mobile-alt"></i>
+            <span>GOPAY</span>
+            <div class="payment-detail">ID: 081234567890</div>
+        </div>
+        <div class="payment-option" data-payment="ShopeePay">
+            <i class="fas fa-store"></i>
+            <span>ShopeePay</span>
+            <div class="payment-detail">ID: 081234567890</div>
         </div>
     </div>
+    <div id="selectedPaymentInfo" style="display: none;"></div>
+</div>
 
     <!-- Modal Syarat & Ketentuan -->
     <div id="termsModal" class="modal">
