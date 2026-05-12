@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="" alt="Logo" id="logoImg" class="logo-img">
+                <img src="https://raw.githubusercontent.com/gemapaschall1489/ReconvPoint/main/images/logo.png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
                 <span class="logo-text">JokiGame<span class="ml-text">ML</span></span>
             </div>
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Dashboard</a>
@@ -166,19 +166,6 @@
     <script src="script.js"></script>
     
     <script>
-        // Load logo
-        function loadLogo() {
-            const savedLogo = localStorage.getItem('websiteLogo');
-            const logoImg = document.getElementById('logoImg');
-            if (savedLogo && logoImg) {
-                logoImg.src = savedLogo;
-            } else if (logoImg) {
-                logoImg.src = "https://placehold.co/40x40/667eea/white?text=ML";
-            }
-        }
-        loadLogo();
-        
-        // Modal terms
         const modal = document.getElementById('termsModal');
         const termsLink = document.getElementById('termsLink');
         const closeBtn = document.querySelector('.modal-close');
