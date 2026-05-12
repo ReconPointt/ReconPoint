@@ -117,6 +117,7 @@ if (document.getElementById('orderForm')) {
         // ============ KIRIM KE GOOGLE SHEETS ============
         // GANTI URL INI DENGAN WEB APP URL DARI GOOGLE APPS SCRIPT
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtzzPLxeUxJ1MdpANC2e1rSYAecb3zzGTGKYN1T4Qmu4NUn7wdEd_b7t5qWadyJPtt/exec';
+        console.log("🚀 Data yang akan dikirim:", orderData); // <-- Tambahkan ini
         
         try {
             const response = await fetch(GOOGLE_SCRIPT_URL, {
