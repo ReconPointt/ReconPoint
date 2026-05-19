@@ -792,6 +792,26 @@ body {
     border-radius: 20px;
     font-size: 12px;
 }
+/* Highlight merah jika metode pembayaran belum dipilih */
+.payment-methods.error {
+    border: 2px solid #ff6b6b;
+    border-radius: 20px;
+    background: rgba(255,107,107,0.1);
+}
+
+.payment-error-message {
+    color: #ff6b6b;
+    font-size: 12px;
+    margin-top: 10px;
+    padding: 8px;
+    background: rgba(255,107,107,0.1);
+    border-radius: 8px;
+    display: none;
+}
+
+.payment-error-message.show {
+    display: block;
+}
 
 /* Modal */
 .modal {
