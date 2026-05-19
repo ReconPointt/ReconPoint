@@ -95,7 +95,34 @@ if (document.getElementById('orderForm')) {
             alert('Anda harus menyetujui syarat dan ketentuan');
             return;
         }
+        // ============ VALIDASI WAJIB PILIH METODE PEMBAYARAN ============
+        // Ambil metode pembayaran yang dipilih
+        const selectedPaymentMethod = document.querySelector('.payment-option.selected');
+        const paymentError = document.getElementById('paymentError');
+        const paymentMethodsDiv = document.getElementById('paymentMethods');
+    
+        if (!selectedPaymentMethod) {
+            // Tampilkan error
+            paymentError.classList.add('show');
+            paymentMethodsDiv.classList.add('error');
         
+        // Scroll ke bagian metode pembayaran
+        paymentMethodsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        alert('⚠️ Silakan pilih metode pembayaran terlebih dahulu!');
+        return;
+        }
+    
+        // Jika sudah dipilih, hilangkan error (jika ada)
+        paymentError.classList.remove('show');
+        paymentMethodsDiv.classList.remove('error');
+    
+        // Ambil nama metode pembayaran dari attribute data-payment
+        const metodeBayar = selectedPaymentMethod.getAttribute('data-payment');
+    
+        // ... lanjutkan ke pengiriman data (whatsapp & google sheets) ...
+        });
+    
         const idGameFull = server ? `${idGame} (server: ${server})` : idGame;
         
         // Data untuk dikirim ke Google Sheets
