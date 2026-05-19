@@ -53,9 +53,23 @@ if (document.getElementById('orderForm')) {
         document.getElementById('totalPrice').innerText = selectedPrice;
         const rankTujuanInput = document.getElementById('rankTujuan');
         if (rankTujuanInput) {
-            const targetRank = selectedRank.split(' → ')[1] || selectedRank;
-            rankTujuanInput.value = targetRank;
+            if (selectedRank === 'Custom') {
+            rankTujuanInput.value = 'Chat Admin untuk konsultasi';
+        } else {
+            // Daftar urutan rank
+            const rankList = ['Warrior', 'Elite', 'Master', 'Grandmaster', 'Epic', 'Legend', 'Mythic'];
+            const currentIndex = rankList.indexOf(selectedRank);
+        
+            if (currentIndex !== -1 && currentIndex + 1 < rankList.length) {
+            // Rank berikutnya
+                rankTujuanInput.value = rankList[currentIndex + 1];
+            } else if (selectedRank === 'Mythic') {
+                rankTujuanInput.value = 'Mythic Glory';
+            } else {
+                rankTujuanInput.value = selectedRank;
+            }
         }
+    }
     } else {
         document.getElementById('selectedRank').innerText = 'Belum ada paket dipilih';
         document.getElementById('selectedPrice').innerText = 'Rp0';
