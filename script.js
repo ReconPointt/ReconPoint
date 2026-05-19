@@ -57,63 +57,20 @@ if (document.getElementById('orderForm')) {
     const selectedRank = localStorage.getItem('selectedRank');
     const selectedPrice = localStorage.getItem('selectedPrice');
     
-    // Daftar urutan rank (untuk menentukan rank tujuan)
-    const rankList = ['Warrior', 'Elite', 'Master', 'Grandmaster', 'Epic', 'Legend', 'Mythic'];
-    
-    // Fungsi untuk mendapatkan rank berikutnya
-    function getNextRank(currentRank) {
-        const index = rankList.indexOf(currentRank);
-        if (index !== -1 && index + 1 < rankList.length) {
-            return rankList[index + 1];
-        }
-        return null;
-    }
-    
-    // Fungsi untuk mendapatkan harga antar rank
-    function getPriceBetweenRanks(fromRank, toRank) {
-        const fromIndex = rankList.indexOf(fromRank);
-        const toIndex = rankList.indexOf(toRank);
-        
-        if (fromIndex === -1 || toIndex === -1 || toIndex <= fromIndex) return 0;
-        
-        // Harga per rank (dari Warrior ke rank berikutnya)
-        const prices = {
-            'Warrior': 25000,
-            'Elite': 35000,
-            'Master': 50000,
-            'Grandmaster': 70000,
-            'Epic': 100000,
-            'Legend': 150000,
-            'Mythic': 200000
-        };
-        
-        let total = 0;
-        for (let i = fromIndex; i < toIndex; i++) {
-            total += prices[rankList[i]];
-        }
-        return total;
-    }
-    
     if (selectedRank && selectedPrice) {
         // Tampilkan paket yang dipilih
         document.getElementById('selectedRank').innerText = selectedRank;
         document.getElementById('selectedPrice').innerText = selectedPrice;
         document.getElementById('totalPrice').innerText = selectedPrice;
         
-        // Tentukan rank tujuan
+        // ============ RANK TUJUAN = PAKET YANG DIPILIH ============
         const rankTujuanInput = document.getElementById('rankTujuan');
         if (rankTujuanInput) {
             if (selectedRank === 'Custom') {
-                rankTujuanInput.value = 'Chat Admin untuk konsultasi';
+                rankTujuanInput.value = 'Custom (Chat Admin)';
             } else {
-                const nextRank = getNextRank(selectedRank);
-                if (nextRank) {
-                    rankTujuanInput.value = nextRank;
-                } else if (selectedRank === 'Mythic') {
-                    rankTujuanInput.value = 'Mythic Glory';
-                } else {
-                    rankTujuanInput.value = selectedRank;
-                }
+                // Rank tujuan sama dengan paket yang dipilih
+                rankTujuanInput.value = selectedRank;
             }
         }
     } else {
@@ -230,7 +187,7 @@ if (document.getElementById('orderForm')) {
                       `Game: Mobile Legends%0A` +
                       `Paket: ${selectedRank || 'Custom'}%0A` +
                       `Harga: ${selectedPrice || 'Chat admin'}%0A` +
-                      `Rank Awal: ${rankAwal}%0A` +
+                      `Rank Saat Ini: ${rankAwal}%0A` +
                       `Rank Tujuan: ${rankTujuan}%0A` +
                       `ID Game: ${idGameFull}%0A` +
                       `Username: ${username}%0A` +
