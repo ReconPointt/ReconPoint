@@ -21,10 +21,11 @@ if (document.querySelector('.paket-grid')) {
                 selectedRank = card.getAttribute('data-rank');
                 selectedPrice = card.querySelector('.price').innerText;
                 
+                console.log('Paket dipilih:', selectedRank, selectedPrice);
+                
                 localStorage.setItem('selectedRank', selectedRank);
                 localStorage.setItem('selectedPrice', selectedPrice);
                 
-                // Redirect ke halaman order
                 window.location.href = 'order.html';
             });
         }
@@ -45,7 +46,6 @@ if (document.getElementById('orderForm')) {
                 option.classList.add('selected');
                 localStorage.setItem('selectedPayment', selectedPayment);
                 
-                // Hilangkan error jika ada
                 const paymentError = document.getElementById('paymentError');
                 const paymentMethodsDiv = document.getElementById('paymentMethods');
                 if (paymentError) paymentError.classList.remove('show');
@@ -57,21 +57,58 @@ if (document.getElementById('orderForm')) {
     const selectedRank = localStorage.getItem('selectedRank');
     const selectedPrice = localStorage.getItem('selectedPrice');
     
+    // Daftar urutan rank (untuk menentukan rank tujuan)
+    const rankList = ['Warrior', 'Elite', 'Master', 'Grandmaster', 'Epic', 'Legend', 'Mythic'];
+    
+    // Fungsi untuk mendapatkan rank berikutnya
+    function getNextRank(currentRank) {
+        const index = rankList.indexOf(currentRank);
+        if (index !== -1 && index + 1 < rankList.length) {
+            return rankList[index + 1];
+        }
+        return null;
+    }
+    
+    // Fungsi untuk mendapatkan harga antar rank
+    function getPriceBetweenRanks(fromRank, toRank) {
+        const fromIndex = rankList.indexOf(fromRank);
+        const toIndex = rankList.indexOf(toRank);
+        
+        if (fromIndex === -1 || toIndex === -1 || toIndex <= fromIndex) return 0;
+        
+        // Harga per rank (dari Warrior ke rank berikutnya)
+        const prices = {
+            'Warrior': 25000,
+            'Elite': 35000,
+            'Master': 50000,
+            'Grandmaster': 70000,
+            'Epic': 100000,
+            'Legend': 150000,
+            'Mythic': 200000
+        };
+        
+        let total = 0;
+        for (let i = fromIndex; i < toIndex; i++) {
+            total += prices[rankList[i]];
+        }
+        return total;
+    }
+    
     if (selectedRank && selectedPrice) {
+        // Tampilkan paket yang dipilih
         document.getElementById('selectedRank').innerText = selectedRank;
         document.getElementById('selectedPrice').innerText = selectedPrice;
         document.getElementById('totalPrice').innerText = selectedPrice;
+        
+        // Tentukan rank tujuan
         const rankTujuanInput = document.getElementById('rankTujuan');
         if (rankTujuanInput) {
             if (selectedRank === 'Custom') {
                 rankTujuanInput.value = 'Chat Admin untuk konsultasi';
             } else {
-                // Daftar urutan rank
-                const rankList = ['Warrior', 'Elite', 'Master', 'Grandmaster', 'Epic', 'Legend', 'Mythic'];
-                const currentIndex = rankList.indexOf(selectedRank);
-                
-                if (currentIndex !== -1 && currentIndex + 1 < rankList.length) {
-                    rankTujuanInput.value = rankList[currentIndex + 1];
+                const nextRank = getNextRank(selectedRank);
+                if (nextRank) {
+                    rankTujuanInput.value = nextRank;
                 } else if (selectedRank === 'Mythic') {
                     rankTujuanInput.value = 'Mythic Glory';
                 } else {
@@ -117,7 +154,7 @@ if (document.getElementById('orderForm')) {
             return;
         }
         
-        // ============ VALIDASI WAJIB PILIH METODE PEMBAYARAN ============
+        // Validasi metode pembayaran
         const selectedPaymentMethod = document.querySelector('.payment-option.selected');
         const paymentError = document.getElementById('paymentError');
         const paymentMethodsDiv = document.getElementById('paymentMethods');
@@ -157,7 +194,7 @@ if (document.getElementById('orderForm')) {
             status: 'Baru'
         };
         
-        // ============ KIRIM KE GOOGLE SHEETS ============
+        // Kirim ke Google Sheets
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtzzPLxeUxJ1MdpANC2e1rSYAecb3zzGTGKYN1T4Qmu4NUn7wdEd_b7t5qWadyJPtt/exec';
         
         try {
@@ -177,15 +214,15 @@ if (document.getElementById('orderForm')) {
             console.error('❌ Gagal kirim ke Google Sheets:', error);
         }
         
-        // Simpan ke localStorage (opsional)
+        // Simpan ke localStorage
         const orders = JSON.parse(localStorage.getItem('orders') || '[]');
         orders.push({ id: Date.now(), ...orderData });
         localStorage.setItem('orders', JSON.stringify(orders));
         
-        // ============ KIRIM WHATSAPP ============
+        // Kirim WhatsApp
         const nomorAdmin = '6281313023459';
         
-        const pesan = `Halo Admin JokiGame! Saya ingin order joki ML.%0A%0A` +
+        const pesan = `Halo Admin ReconPoint! Saya ingin order joki ML.%0A%0A` +
                       `*Data Diri:*%0A` +
                       `Nama: ${nama}%0A` +
                       `No WhatsApp: ${wa}%0A%0A` +
@@ -214,7 +251,6 @@ if (document.getElementById('orderForm')) {
         document.getElementById('rankTujuan').value = '';
         document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
         
-        // Redirect ke dashboard setelah 3 detik
         setTimeout(() => {
             window.location.href = 'index.html';
         }, 3000);
@@ -227,4 +263,4 @@ function scrollToPaket() {
     if (paketSection) {
         paketSection.scrollIntoView({ behavior: 'smooth' });
     }
-                                }
+}
