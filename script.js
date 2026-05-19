@@ -24,6 +24,7 @@ if (document.querySelector('.paket-grid')) {
                 localStorage.setItem('selectedRank', selectedRank);
                 localStorage.setItem('selectedPrice', selectedPrice);
                 
+                // Redirect ke halaman order
                 window.location.href = 'order.html';
             });
         }
@@ -35,14 +36,23 @@ if (document.getElementById('orderForm')) {
     let selectedPayment = null;
     
     // Pilihan metode pembayaran
-    document.querySelectorAll('.payment-option').forEach(option => {
-        option.addEventListener('click', () => {
-            selectedPayment = option.getAttribute('data-payment');
-            document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
-            option.classList.add('selected');
-            localStorage.setItem('selectedPayment', selectedPayment);
+    const paymentOptions = document.querySelectorAll('.payment-option');
+    if (paymentOptions.length > 0) {
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                selectedPayment = option.getAttribute('data-payment');
+                document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                localStorage.setItem('selectedPayment', selectedPayment);
+                
+                // Hilangkan error jika ada
+                const paymentError = document.getElementById('paymentError');
+                const paymentMethodsDiv = document.getElementById('paymentMethods');
+                if (paymentError) paymentError.classList.remove('show');
+                if (paymentMethodsDiv) paymentMethodsDiv.classList.remove('error');
+            });
         });
-    });
+    }
     
     const selectedRank = localStorage.getItem('selectedRank');
     const selectedPrice = localStorage.getItem('selectedPrice');
@@ -54,22 +64,21 @@ if (document.getElementById('orderForm')) {
         const rankTujuanInput = document.getElementById('rankTujuan');
         if (rankTujuanInput) {
             if (selectedRank === 'Custom') {
-            rankTujuanInput.value = 'Chat Admin untuk konsultasi';
-        } else {
-            // Daftar urutan rank
-            const rankList = ['Warrior', 'Elite', 'Master', 'Grandmaster', 'Epic', 'Legend', 'Mythic'];
-            const currentIndex = rankList.indexOf(selectedRank);
-        
-            if (currentIndex !== -1 && currentIndex + 1 < rankList.length) {
-            // Rank berikutnya
-                rankTujuanInput.value = rankList[currentIndex + 1];
-            } else if (selectedRank === 'Mythic') {
-                rankTujuanInput.value = 'Mythic Glory';
+                rankTujuanInput.value = 'Chat Admin untuk konsultasi';
             } else {
-                rankTujuanInput.value = selectedRank;
+                // Daftar urutan rank
+                const rankList = ['Warrior', 'Elite', 'Master', 'Grandmaster', 'Epic', 'Legend', 'Mythic'];
+                const currentIndex = rankList.indexOf(selectedRank);
+                
+                if (currentIndex !== -1 && currentIndex + 1 < rankList.length) {
+                    rankTujuanInput.value = rankList[currentIndex + 1];
+                } else if (selectedRank === 'Mythic') {
+                    rankTujuanInput.value = 'Mythic Glory';
+                } else {
+                    rankTujuanInput.value = selectedRank;
+                }
             }
         }
-    }
     } else {
         document.getElementById('selectedRank').innerText = 'Belum ada paket dipilih';
         document.getElementById('selectedPrice').innerText = 'Rp0';
@@ -83,7 +92,7 @@ if (document.getElementById('orderForm')) {
         });
     }
     
-    // ============ SUBMIT FORM ============
+    // SUBMIT FORM
     document.getElementById('orderForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         
@@ -97,9 +106,7 @@ if (document.getElementById('orderForm')) {
         const catatan = document.getElementById('catatan').value.trim();
         const agreeTerms = document.getElementById('agreeTerms').checked;
         
-        // Ambil metode pembayaran dari localStorage atau dari selectedPayment
-        const metodeBayar = localStorage.getItem('selectedPayment') || selectedPayment || 'Belum dipilih';
-        
+        // Validasi data dasar
         if (!nama || !wa || !rankAwal || !idGame || !username) {
             alert('Mohon lengkapi semua data yang diperlukan!');
             return;
@@ -109,37 +116,31 @@ if (document.getElementById('orderForm')) {
             alert('Anda harus menyetujui syarat dan ketentuan');
             return;
         }
+        
         // ============ VALIDASI WAJIB PILIH METODE PEMBAYARAN ============
-        // Ambil metode pembayaran yang dipilih
         const selectedPaymentMethod = document.querySelector('.payment-option.selected');
         const paymentError = document.getElementById('paymentError');
         const paymentMethodsDiv = document.getElementById('paymentMethods');
-    
+        
         if (!selectedPaymentMethod) {
-            // Tampilkan error
-            paymentError.classList.add('show');
-            paymentMethodsDiv.classList.add('error');
-        
-        // Scroll ke bagian metode pembayaran
-        paymentMethodsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        alert('⚠️ Silakan pilih metode pembayaran terlebih dahulu!');
-        return;
+            if (paymentError) paymentError.classList.add('show');
+            if (paymentMethodsDiv) paymentMethodsDiv.classList.add('error');
+            if (paymentMethodsDiv) {
+                paymentMethodsDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            alert('⚠️ Silakan pilih metode pembayaran terlebih dahulu!');
+            return;
         }
-    
-        // Jika sudah dipilih, hilangkan error (jika ada)
-        paymentError.classList.remove('show');
-        paymentMethodsDiv.classList.remove('error');
-    
-        // Ambil nama metode pembayaran dari attribute data-payment
+        
+        if (paymentError) paymentError.classList.remove('show');
+        if (paymentMethodsDiv) paymentMethodsDiv.classList.remove('error');
+        
         const metodeBayar = selectedPaymentMethod.getAttribute('data-payment');
-    
-        // ... lanjutkan ke pengiriman data (whatsapp & google sheets) ...
-        });
-    
+        localStorage.setItem('selectedPayment', metodeBayar);
+        
         const idGameFull = server ? `${idGame} (server: ${server})` : idGame;
         
-        // Data untuk dikirim ke Google Sheets
+        // Data untuk Google Sheets
         const orderData = {
             waktu: new Date().toLocaleString('id-ID'),
             nama: nama,
@@ -152,34 +153,37 @@ if (document.getElementById('orderForm')) {
             idGame: idGameFull,
             username: username,
             catatan: catatan || '-',
+            metodeBayar: metodeBayar,
             status: 'Baru'
         };
         
         // ============ KIRIM KE GOOGLE SHEETS ============
-        // GANTI URL INI DENGAN WEB APP URL DARI GOOGLE APPS SCRIPT
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtzzPLxeUxJ1MdpANC2e1rSYAecb3zzGTGKYN1T4Qmu4NUn7wdEd_b7t5qWadyJPtt/exec';
-        console.log("🚀 Data yang akan dikirim:", orderData); // <-- Tambahkan ini
         
         try {
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
+            const formData = new URLSearchParams();
+            for (const key in orderData) {
+                formData.append(key, orderData[key]);
+            }
+            
+            await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(orderData)
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: formData
             });
             console.log('✅ Data terkirim ke Google Sheets');
         } catch (error) {
             console.error('❌ Gagal kirim ke Google Sheets:', error);
         }
         
-        // Simpan ke localStorage (opsional, untuk admin.html yang lama)
+        // Simpan ke localStorage (opsional)
         const orders = JSON.parse(localStorage.getItem('orders') || '[]');
         orders.push({ id: Date.now(), ...orderData });
         localStorage.setItem('orders', JSON.stringify(orders));
         
         // ============ KIRIM WHATSAPP ============
-        // GANTI NOMOR WHATSAPP ADMIN DI SINI!
-        const nomorAdmin = '6281313023459';  // <-- GANTI DENGAN NOMORMU
+        const nomorAdmin = '6281313023459';
         
         const pesan = `Halo Admin JokiGame! Saya ingin order joki ML.%0A%0A` +
                       `*Data Diri:*%0A` +
@@ -199,17 +203,21 @@ if (document.getElementById('orderForm')) {
         
         window.open(`https://wa.me/${nomorAdmin}?text=${pesan}`, '_blank');
         
-        alert('✅ Order berhasil! Data tersimpan di Google Sheets. Admin akan menghubungi Anda via WhatsApp.');
+        alert('✅ Order berhasil! Data tersimpan. Admin akan menghubungi Anda via WhatsApp.');
         
         // Reset
         localStorage.removeItem('selectedRank');
         localStorage.removeItem('selectedPrice');
         localStorage.removeItem('selectedPayment');
-        selectedPayment = null;
         
         this.reset();
         document.getElementById('rankTujuan').value = '';
         document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+        
+        // Redirect ke dashboard setelah 3 detik
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 3000);
     });
 }
 
@@ -219,4 +227,4 @@ function scrollToPaket() {
     if (paketSection) {
         paketSection.scrollIntoView({ behavior: 'smooth' });
     }
-}
+                                }
