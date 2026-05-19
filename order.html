@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Order Joki ML - JokiGame</title>
+    <title>Form Order Joki ML - ReconPoint</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -13,8 +13,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/gemapaschall1489/ReconvPoint/main/images/logo.png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
-                <span class="logo-text">JokiGame<span class="ml-text">ML</span></span>
+                <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo.png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
+                <span class="logo-text">Recon<span class="ml-text">Point</span></span>
             </div>
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Dashboard</a>
         </div>
@@ -127,54 +127,57 @@
                 </form>
             </div>
             
-<!-- Payment Info -->
-<div class="payment-info-card">
-    <div class="payment-header">
-        <i class="fas fa-credit-card"></i>
-        <h4>Pilih Metode Pembayaran</h4>
-        <p style="font-size: 12px; margin-left: auto;">⚠️ Pilih salah satu</p>
+            <!-- Payment Info -->
+            <div class="payment-info-card">
+                <div class="payment-header">
+                    <i class="fas fa-credit-card"></i>
+                    <h4>Pilih Metode Pembayaran</h4>
+                    <p style="font-size: 12px; margin-left: auto;">⚠️ Wajib dipilih</p>
+                </div>
+                <div class="payment-methods" id="paymentMethods">
+                    <div class="payment-option" data-payment="BCA Transfer">
+                        <i class="fas fa-university"></i>
+                        <span>BCA Transfer</span>
+                        <div class="payment-detail">a.n. RECONPOINT - 1234567890</div>
+                    </div>
+                    <div class="payment-option" data-payment="Mandiri Transfer">
+                        <i class="fas fa-university"></i>
+                        <span>Mandiri Transfer</span>
+                        <div class="payment-detail">a.n. RECONPOINT - 9876543210</div>
+                    </div>
+                    <div class="payment-option" data-payment="BRI Transfer">
+                        <i class="fas fa-university"></i>
+                        <span>BRI Transfer</span>
+                        <div class="payment-detail">a.n. RECONPOINT - 5678901234</div>
+                    </div>
+                    <div class="payment-option" data-payment="Dana">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Dana</span>
+                        <div class="payment-detail">ID: 081234567890</div>
+                    </div>
+                    <div class="payment-option" data-payment="OVO">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>OVO</span>
+                        <div class="payment-detail">ID: 081234567890</div>
+                    </div>
+                    <div class="payment-option" data-payment="GOPAY">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>GOPAY</span>
+                        <div class="payment-detail">ID: 081234567890</div>
+                    </div>
+                    <div class="payment-option" data-payment="ShopeePay">
+                        <i class="fas fa-store"></i>
+                        <span>ShopeePay</span>
+                        <div class="payment-detail">ID: 081234567890</div>
+                    </div>
+                </div>
+                <div id="paymentError" class="payment-error-message">
+                    ⚠️ Silakan pilih metode pembayaran terlebih dahulu!
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="payment-methods" id="paymentMethods">
-        <div class="payment-option" data-payment="BCA Transfer">
-            <i class="fas fa-university"></i>
-            <span>BCA Transfer</span>
-            <div class="payment-detail">a.n. JOKIGAME - 1234567890</div>
-        </div>
-        <div id="paymentError" class="payment-error-message">
-        ⚠️ Silakan pilih metode pembayaran terlebih dahulu!
-        </div>
-        <div class="payment-option" data-payment="Mandiri Transfer">
-            <i class="fas fa-university"></i>
-            <span>Mandiri Transfer</span>
-            <div class="payment-detail">a.n. JOKIGAME - 9876543210</div>
-        </div>
-        <div class="payment-option" data-payment="BRI Transfer">
-            <i class="fas fa-university"></i>
-            <span>BRI Transfer</span>
-            <div class="payment-detail">a.n. JOKIGAME - 5678901234</div>
-        </div>
-        <div class="payment-option" data-payment="Dana">
-            <i class="fas fa-mobile-alt"></i>
-            <span>Dana</span>
-            <div class="payment-detail">ID: 081234567890</div>
-        </div>
-        <div class="payment-option" data-payment="OVO">
-            <i class="fas fa-mobile-alt"></i>
-            <span>OVO</span>
-            <div class="payment-detail">ID: 081234567890</div>
-        </div>
-        <div class="payment-option" data-payment="GOPAY">
-            <i class="fas fa-mobile-alt"></i>
-            <span>GOPAY</span>
-            <div class="payment-detail">ID: 081234567890</div>
-        </div>
-        <div class="payment-option" data-payment="ShopeePay">
-            <i class="fas fa-store"></i>
-            <span>ShopeePay</span>
-            <div class="payment-detail">ID: 081234567890</div>
-        </div>
-    </div>
-</div>
+
     <!-- Modal Syarat & Ketentuan -->
     <div id="termsModal" class="modal">
         <div class="modal-content">
@@ -195,6 +198,7 @@
     <script src="script.js"></script>
     
     <script>
+        // Modal Syarat & Ketentuan
         const modal = document.getElementById('termsModal');
         const termsLink = document.getElementById('termsLink');
         const closeBtn = document.querySelector('.modal-close');
