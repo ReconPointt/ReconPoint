@@ -13,7 +13,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo%20(2).png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
+                <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo.png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
                 <span class="logo-text">Recon<span class="ml-text">Point</span></span>
             </div>
             <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Kembali ke Dashboard</a>
@@ -59,7 +59,7 @@
                 <div class="kalkulator-body">
                     <div class="form-group">
                         <label><i class="fas fa-star"></i> Jumlah Bintang</label>
-                        <input type="number" id="jumlahBintangInput" min="1" max="100" value="1" placeholder="Masukkan jumlah bintang">
+                        <input type="number" id="jumlahBintangInput" min="1" max="100" value="1">
                         <small>Minimal 1 bintang, maksimal 100 bintang</small>
                     </div>
                     <div class="kalkulator-hasil">
@@ -219,6 +219,7 @@
     <script src="script.js"></script>
     
     <script>
+        // Modal Syarat & Ketentuan
         const modal = document.getElementById('termsModal');
         const termsLink = document.getElementById('termsLink');
         const closeBtn = document.querySelector('.modal-close');
