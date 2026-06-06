@@ -34,13 +34,43 @@
                         <strong id="selectedRank">-</strong>
                     </div>
                     <div class="summary-item">
-                        <span>Harga:</span>
-                        <strong id="selectedPrice" class="price-highlight">Rp0</strong>
+                        <span>Harga per bintang:</span>
+                        <strong id="hargaPerBintang" class="price-highlight">Rp0</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Jumlah bintang:</span>
+                        <strong id="jumlahBintang">0</strong>
                     </div>
                     <div class="summary-divider"></div>
                     <div class="summary-total">
-                        <span>Total:</span>
+                        <span>Total Harga:</span>
                         <strong id="totalPrice" class="price-highlight">Rp0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kalkulator Bintang -->
+            <div class="kalkulator-card">
+                <div class="kalkulator-header">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Kalkulator Bintang</h3>
+                    <p>Masukkan jumlah bintang yang ingin dipesan</p>
+                </div>
+                <div class="kalkulator-body">
+                    <div class="form-group">
+                        <label><i class="fas fa-star"></i> Jumlah Bintang</label>
+                        <input type="number" id="jumlahBintangInput" min="1" max="100" value="1" placeholder="Masukkan jumlah bintang">
+                        <small>Minimal 1 bintang, maksimal 100 bintang</small>
+                    </div>
+                    <div class="kalkulator-hasil">
+                        <div class="hasil-detail">
+                            <span>Harga per bintang:</span>
+                            <strong id="hargaPerBintangDisplay">Rp0</strong>
+                        </div>
+                        <div class="hasil-total">
+                            <span>Total yang harus dibayar:</span>
+                            <strong id="totalHargaDisplay">Rp0</strong>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,22 +97,13 @@
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label><i class="fas fa-arrow-up"></i> Rank Awal Saat Ini <span class="required">*</span></label>
-                            <select id="rankAwal" required>
-                                <option value="">-- Pilih Rank Awal --</option>
-                                <option value="Warrior">⚔️ Warrior</option>
-                                <option value="Elite">⭐ Elite</option>
-                                <option value="Master">🏅 Master</option>
-                                <option value="Grandmaster">🎖️ Grandmaster</option>
-                                <option value="Epic">🔥 Epic</option>
-                                <option value="Legend">👑 Legend</option>
-                                <option value="Mythic">💎 Mythic</option>
-                            </select>
+                            <label><i class="fas fa-arrow-up"></i> Rank Awal</label>
+                            <input type="text" id="rankAwalDisplay" readonly disabled>
                         </div>
 
                         <div class="form-group">
                             <label><i class="fas fa-flag-checkered"></i> Rank Tujuan</label>
-                            <input type="text" id="rankTujuan" placeholder="Akan terisi otomatis" readonly disabled>
+                            <input type="text" id="rankTujuanDisplay" readonly disabled>
                         </div>
                     </div>
 
@@ -190,7 +211,7 @@
                 <p><strong>2. Proses Joki</strong><br>Proses sesuai antrian. Customer akan diinformasikan via WhatsApp.</p>
                 <p><strong>3. Pembayaran</strong><br>DP 50% sebelum proses, lunas setelah selesai.</p>
                 <p><strong>4. Refund</strong><br>Tidak ada refund jika proses sudah berjalan 50%.</p>
-                <p><strong>5. Garansi</strong><br>Garansi rank turun dalam 3 hari setelah selesai (kecuali disebabkan oleh customer).</p>
+                <p><strong>5. Garansi</strong><br>Garansi jika bintang turun dalam 3 hari setelah selesai.</p>
             </div>
         </div>
     </div>
