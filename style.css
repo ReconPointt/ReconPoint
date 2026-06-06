@@ -735,12 +735,18 @@ body {
     transform: scale(1.02);
 }
 
-/* Payment Methods - Bisa Diklik */
+/* Payment Methods */
 .payment-methods {
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.payment-methods.error {
+    border: 2px solid #ff6b6b;
+    border-radius: 20px;
+    background: rgba(255,107,107,0.1);
 }
 
 .payment-option {
@@ -785,13 +791,6 @@ body {
 
 .payment-option.selected .payment-detail {
     color: #ffd700;
-}
-
-/* Payment Error */
-.payment-methods.error {
-    border: 2px solid #ff6b6b;
-    border-radius: 20px;
-    background: rgba(255,107,107,0.1);
 }
 
 .payment-error-message {
@@ -865,7 +864,7 @@ body {
     background: #667eea;
 }
 
-/* ============ KALKULATOR BINTANG DI ORDER.HTML ============ */
+/* ============ KALKULATOR BINTANG (TAMBAHAN BARU) ============ */
 .kalkulator-card {
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
@@ -947,9 +946,17 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
+.hasil-detail span {
+    color: #ccc;
+}
+
 .hasil-detail strong {
     color: #ffd700;
     font-size: 18px;
+}
+
+.hasil-total span {
+    color: #ccc;
 }
 
 .hasil-total strong {
