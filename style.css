@@ -11,6 +11,16 @@ body {
     overflow-x: hidden;
 }
 
+/* Logo Link Style */
+.logo-link {
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
+
 /* Navbar */
 .navbar {
     background: rgba(0,0,0,0.8);
@@ -864,7 +874,7 @@ body {
     background: #667eea;
 }
 
-/* ============ KALKULATOR BINTANG (TAMBAHAN BARU) ============ */
+/* ============ KALKULATOR BINTANG ============ */
 .kalkulator-card {
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(10px);
