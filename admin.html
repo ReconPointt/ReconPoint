@@ -132,8 +132,8 @@
                     <thead>
                         <tr>
                             <th>No</th><th>Waktu</th><th>Nama</th><th>WhatsApp</th>
-                            <th>Game</th><th>Paket</th><th>Harga</th>
-                            <th>Rank Awal</th><th>Rank Tujuan</th>
+                            <th>Game</th><th>Paket</th><th>Jumlah Bintang</th>
+                            <th>Harga per Bintang</th><th>Total Harga</th>
                             <th>ID Game</th><th>Username</th><th>Status</th>
                         </tr>
                     </thead>
@@ -145,15 +145,17 @@
 
     <script>
         // ============ GANTI DENGAN SHEET_ID KAMU ============
-        const SHEET_ID = '1maTjRm4SvlW0RcP7NzBU_QmJzuvRZ-IM3mkndop-t-I';  // <-- GANTI DENGAN SHEET_ID DARI GOOGLE SHEETS
+        const SHEET_ID = '1maTjRm4SvlW0RcP7NzBU_QmJzuvRZ-IM3mkndop-t-I';
         
         async function loadData() {
             document.getElementById('loading').style.display = 'block';
             document.getElementById('tableContent').style.display = 'none';
             
             try {
-                // Gunakan Google Visualization API
-                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
+                // ✅ LIMIT 1000 BARIS - TAMBAHKAN PARAMETER tq=limit 1000
+                const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&tq=limit 1000`;
+                console.log('📡 Memuat data dari:', url);
+                
                 const response = await fetch(url);
                 const text = await response.text();
                 
@@ -174,9 +176,9 @@
                             wa: row[2]?.v || '-',
                             game: row[3]?.v || '-',
                             paket: row[4]?.v || '-',
-                            harga: row[5]?.v || '-',
-                            rankAwal: row[6]?.v || '-',
-                            rankTujuan: row[7]?.v || '-',
+                            jumlahBintang: row[5]?.v || '-',
+                            hargaPerBintang: row[6]?.v || '-',
+                            totalHarga: row[7]?.v || '-',
                             idGame: row[8]?.v || '-',
                             username: row[9]?.v || '-',
                             catatan: row[10]?.v || '-',
@@ -185,6 +187,7 @@
                     }
                 }
                 
+                console.log(`✅ Berhasil memuat ${orders.length} data order`);
                 renderOrders(orders);
                 
                 // Update statistik
@@ -209,7 +212,11 @@
         function renderOrders(orders) {
             const tbody = document.getElementById('orderTableBody');
             if (orders.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="12" style="text-align:center">📭 Belum ada order</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="12" style="text-align:center">📭 Belum ada order</td></tr>' +
+                                 '<tr><td colspan="12" style="text-align:center; padding:20px;">Silakan lakukan order terlebih dahulu</td></tr>' +
+                                 '<tr><td colspan="12" style="text-align:center; padding:20px;">Data akan muncul otomatis setelah ada order</td></tr>' +
+                                 '<tr><td colspan="12" style="text-align:center; padding:20px;">Refresh halaman jika sudah order</td></tr>' +
+                                 '<tr><td colspan="12" style="text-align:center; padding:20px;">Total data yang ditampilkan: 1000 baris maksimal</td></tr>';
             } else {
                 tbody.innerHTML = orders.map((order, index) => {
                     let statusClass = 'status-baru';
@@ -223,9 +230,9 @@
                         <td>${order.wa}</td>
                         <td>${order.game}</td>
                         <td>${order.paket}</td>
-                        <td>${order.harga}</td>
-                        <td>${order.rankAwal}</td>
-                        <td>${order.rankTujuan}</td>
+                        <td>${order.jumlahBintang}</td>
+                        <td>${order.hargaPerBintang}</td>
+                        <td>${order.totalHarga}</td>
                         <td>${order.idGame}</td>
                         <td>${order.username}</td>
                         <td><span class="${statusClass}">${order.status}</span></td>
