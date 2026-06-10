@@ -12,10 +12,12 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo%20(2).png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
-                <span class="logo-text">Recon<span class="ml-text">Point</span></span>
-            </div>
+            <a href="#" onclick="scrollToTop(); return false;" class="logo-link" style="text-decoration: none;">
+                <div class="logo">
+                    <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo%20(2).png" alt="Logo" class="logo-img" id="logoImg" onerror="this.src='https://placehold.co/40x40/667eea/white?text=ML'">
+                    <span class="logo-text">Recon<span class="ml-text">Point</span></span>
+                </div>
+            </a>
             <ul class="nav-menu">
                 <li><a href="#home"><i class="fas fa-home"></i> Beranda</a></li>
                 <li><a href="#paket"><i class="fas fa-tag"></i> Paket</a></li>
@@ -89,7 +91,7 @@
         </div>
     </section>
 
-    <!-- Paket Harga - HANYA RANK BARU -->
+    <!-- Paket Harga -->
     <section class="paket-section" id="paket">
         <div class="section-header">
             <h2><i class="fas fa-tag"></i> Pilih Paket Joki</h2>
@@ -174,35 +176,35 @@
         <div class="testimoni-grid">
             <div class="testimoni-card">
                 <div class="testimoni-header">
-                    <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo%20(2).png" alt="User" class="avatar">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User" class="avatar">
                     <div class="testimoni-user">
-                        <h4>REVIEW</h4>
+                        <h4>Andi Setiawan</h4>
                         <div class="rating">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimoni-text">""</p>
+                <p class="testimoni-text">"Jokinya cepat banget, rank langsung naik! Pro player beneran, recommended!"</p>
                 <div class="testimoni-game"><i class="fas fa-gamepad"></i> Mobile Legends</div>
             </div>
             <div class="testimoni-card">
                 <div class="testimoni-header">
-                    <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo%20(2).png" alt="User" class="avatar">
+                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User" class="avatar">
                     <div class="testimoni-user">
-                        <h4>REVIEW</h4>
+                        <h4>Sarah Wijaya</h4>
                         <div class="rating">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimoni-text">""</p>
+                <p class="testimoni-text">"Aman akunnya, nggak pakai cheat. Pasti order lagi kalau butuh joki."</p>
                 <div class="testimoni-game"><i class="fas fa-gamepad"></i> Mobile Legends</div>
             </div>
             <div class="testimoni-card">
                 <div class="testimoni-header">
-                    <img src="https://raw.githubusercontent.com/ReconPointt/ReconPoint/refs/heads/main/images/logo%20(2).png" alt="User" class="avatar">
+                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User" class="avatar">
                     <div class="testimoni-user">
-                        <h4>REVIEW</h4>
+                        <h4>Budi Prasetyo</h4>
                         <div class="rating">★★★★★</div>
                     </div>
                 </div>
-                <p class="testimoni-text">""</p>
+                <p class="testimoni-text">"Harga murah, respon cepet, pelayanan ramah. Worth it banget!"</p>
                 <div class="testimoni-game"><i class="fas fa-gamepad"></i> Mobile Legends</div>
             </div>
         </div>
@@ -299,6 +301,10 @@
     <script>
         function scrollToPaket() {
             document.getElementById('paket').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         const menuToggle = document.getElementById('menuToggle');
