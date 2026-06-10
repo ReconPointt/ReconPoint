@@ -84,7 +84,6 @@ if (document.getElementById('orderForm')) {
         totalPriceElement.innerText = formatRupiah(total);
         jumlahBintangElement.innerText = jumlahBintang;
         
-        // Simpan ke localStorage
         localStorage.setItem('jumlahBintang', jumlahBintang);
         localStorage.setItem('totalHarga', total);
     }
@@ -189,27 +188,44 @@ if (document.getElementById('orderForm')) {
             status: 'Baru'
         };
         
-        // Kirim ke Google Sheets
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxtzzPLxeUxJ1MdpANC2e1rSYAecb3zzGTGKYN1T4Qmu4NUn7wdEd_b7t5qWadyJPtt/exec';
+        // ============ KIRIM KE GOOGLE SHEETS ============
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxFXueGp3BbQeTJ6d9gT4L0Ps9t0Cj7EhHvS3M273n-xgVxtQd8A0Hj-elYC0UHfJDh/exec';
+        
+        // Buat FormData dengan format URLSearchParams
+        const formData = new URLSearchParams();
+        formData.append('waktu', orderData.waktu);
+        formData.append('nama', orderData.nama);
+        formData.append('wa', orderData.wa);
+        formData.append('game', orderData.game);
+        formData.append('paket', orderData.paket);
+        formData.append('rankAwal', orderData.rankAwal);
+        formData.append('rankTujuan', orderData.rankTujuan);
+        formData.append('jumlahBintang', orderData.jumlahBintang);
+        formData.append('hargaPerBintang', orderData.hargaPerBintang);
+        formData.append('totalHarga', orderData.totalHarga);
+        formData.append('idGame', orderData.idGame);
+        formData.append('username', orderData.username);
+        formData.append('catatan', orderData.catatan);
+        formData.append('metodeBayar', orderData.metodeBayar);
+        formData.append('status', orderData.status);
+        
+        console.log('🔍 Data yang dikirim:', Object.fromEntries(formData));
         
         try {
-            const formData = new URLSearchParams();
-            for (const key in orderData) {
-                formData.append(key, orderData[key]);
-            }
-            
             await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
                 body: formData
             });
-            console.log('✅ Data terkirim ke Google Sheets');
+            console.log('✅ Fetch berhasil dikirim ke Google Sheets');
         } catch (error) {
-            console.error('❌ Gagal kirim ke Google Sheets:', error);
+            console.error('❌ Fetch error:', error);
         }
         
-        // Simpan ke localStorage
+        // Simpan ke localStorage (backup)
         const orders = JSON.parse(localStorage.getItem('orders') || '[]');
         orders.push({ id: Date.now(), ...orderData });
         localStorage.setItem('orders', JSON.stringify(orders));
